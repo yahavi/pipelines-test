@@ -12,8 +12,9 @@ pipelines:
     steps:
       - name: HelloStep
         type: Bash
-        inputResources:
-          - name: yahavhook
+        configuration:
+          inputResources:
+            - name: yahavhook
         execution:
           onExecute:
             - echo "hello"
