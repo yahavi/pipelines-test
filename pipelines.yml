@@ -18,7 +18,7 @@ steps:
     configuration:
       jenkinsJobName: rest-pipeline
       inputResources:
-          - name: MyIncomingWebhookResource
+          - name: yahavhook
       integrations:
         - name: yahav
       inputSteps:
