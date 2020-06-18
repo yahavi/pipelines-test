@@ -1,5 +1,5 @@
 resources:
-  - name: jfrogCliGit
+  - name: yahavgit
     type: GitRepo
     configuration:
       path: yahavi/pipelines-test
@@ -9,17 +9,21 @@ name: jenkins_yahav
 configuration:
   nodePool: u18dynamic
 steps:
-  - name: var_bash_step
+  - name: HelloStep
     type: Bash
+    inputResources:
+      - name: yahavgit
     execution:
       onExecute:
         - echo "hello"
-  - name: jfrog_jenkins_pipelines
+  - name: JenkinsStep
     type: Jenkins
     configuration:
       jenkinsJobName: rest-pipeline
+      inputResources:
+        - name: yahavgit
       integrations:
         - name: yahav
       inputSteps:
-        - name: var_bash_step
+        - name: HelloStep
 
