@@ -1,9 +1,8 @@
 resources:
-  - name: yahavgit
-    type: GitRepo
+  - name: yahavhook
+    type: IncomingWebhook
     configuration:
-      path: yahavi/pipelines-test
-      gitProvider: yahav_github
+      webhookName: yahav_hook
       
 name: jenkins_yahav
 configuration:
@@ -11,8 +10,6 @@ configuration:
 steps:
   - name: HelloStep
     type: Bash
-    inputResources:
-      - name: yahavgit
     execution:
       onExecute:
         - echo "hello"
@@ -21,7 +18,7 @@ steps:
     configuration:
       jenkinsJobName: rest-pipeline
       inputResources:
-        - name: yahavgit
+          - name: MyIncomingWebhookResource
       integrations:
         - name: yahav
       inputSteps:
