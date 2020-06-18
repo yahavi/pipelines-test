@@ -1,0 +1,17 @@
+name: jenkins_yahav
+configuration:
+  nodePool: u18dynamic
+steps:
+  - name: var_bash_step
+    type: Bash
+    execution:
+      onExecute:
+        - echo "hello"
+  - name: jfrog_jenkins_pipelines
+    type: Jenkins
+    configuration:
+      jenkinsJobName: rest-pipeline
+      integrations:
+        - name: yahav
+      inputSteps:
+        - name: var_bash_step
