@@ -3,26 +3,28 @@ resources:
     type: IncomingWebhook
     configuration:
       webhookName: yahav_hook
-      
-name: jenkins_yahav
-configuration:
-  nodePool: u18dynamic
-steps:
-  - name: HelloStep
-    type: Bash
-    inputResources:
-      - name: yahavhook
-    execution:
-      onExecute:
-        - echo "hello"
-  - name: JenkinsStep
-    type: Jenkins
+    
+
+pipelines: 
+  - name: jenkins_yahav
     configuration:
-      jenkinsJobName: rest-pipeline
-      inputResources:
+      nodePool: u18dynamic
+    steps:
+      - name: HelloStep
+        type: Bash
+        inputResources:
           - name: yahavhook
-      integrations:
-        - name: yahav
-      inputSteps:
-        - name: HelloStep
+        execution:
+          onExecute:
+            - echo "hello"
+      - name: JenkinsStep
+        type: Jenkins
+        configuration:
+          jenkinsJobName: rest-pipeline
+          inputResources:
+              - name: yahavhook
+          integrations:
+            - name: yahav
+          inputSteps:
+            - name: HelloStep
 
