@@ -1,3 +1,10 @@
+resources:
+  - name: jfrogCliGit
+    type: GitRepo
+    configuration:
+      path: yahavi/pipelines-test
+      gitProvider: yahav_github
+      
 name: jenkins_yahav
 configuration:
   nodePool: u18dynamic
